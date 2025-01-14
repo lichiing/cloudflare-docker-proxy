@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches:
-      - master
+      - modified
     paths-ignore:
       - '**.md'
   repository_dispatch:
@@ -17,7 +17,7 @@ jobs:
       - name: Publish
         uses: cloudflare/wrangler-action@v3
         env:
-          CUSTOM_DOMAIN: ${{ secrets.CUSTOM_DOMAIN || 'libcuda.so' }}
+          CUSTOM_DOMAIN: ${{ secrets.CUSTOM_DOMAIN || 'lisrv.com' }}
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{secrets.CF_ACCOUNT_ID}}
